@@ -1,0 +1,4 @@
+fastapi
+pytest # testing
+sqlalchemy # ORM
+uvicorn # ASGI server
