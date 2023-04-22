@@ -61,11 +61,7 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    config.set_section_option("alembic", "PGUSER", os.environ.get("PGUSER"))
-    config.set_section_option("alembic", "PGPASSWORD", os.environ.get("PGPASSWORD"))
-    config.set_section_option("alembic", "PGHOST", os.environ.get("PGHOST"))
-    config.set_section_option("alembic", "PGPORT", os.environ.get("PGPORT"))
-    config.set_section_option("alembic", "PGDATABASE", os.environ.get("PGDATABASE"))
+    config.set_main_option("sqlalchemy.url", os.environ.get("DATABASE_URL"))
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
