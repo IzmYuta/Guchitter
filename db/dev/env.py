@@ -21,6 +21,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 from app.models import Base
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -60,6 +61,11 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    config.set_main_option("alembic", "PGUSER", os.environ.get("PGUSER"))
+    config.set_main_option("alembic", "PGPASSWORD", os.environ.get("PGPASSWORD"))
+    config.set_main_option("alembic", "PGHOST", os.environ.get("PGHOST"))
+    config.set_main_option("alembic", "PGPORT", os.environ.get("PGPORT"))
+    config.set_main_option("alembic", "PGDATABASE", os.environ.get("PGDATABASE"))
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
