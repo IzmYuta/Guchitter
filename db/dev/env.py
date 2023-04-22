@@ -61,11 +61,11 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    config.set_main_option("alembic", "PGUSER", os.environ.get("PGUSER"))
-    config.set_main_option("alembic", "PGPASSWORD", os.environ.get("PGPASSWORD"))
-    config.set_main_option("alembic", "PGHOST", os.environ.get("PGHOST"))
-    config.set_main_option("alembic", "PGPORT", os.environ.get("PGPORT"))
-    config.set_main_option("alembic", "PGDATABASE", os.environ.get("PGDATABASE"))
+    config.set_option("alembic", "PGUSER", os.environ.get("PGUSER"))
+    config.set_option("alembic", "PGPASSWORD", os.environ.get("PGPASSWORD"))
+    config.set_option("alembic", "PGHOST", os.environ.get("PGHOST"))
+    config.set_option("alembic", "PGPORT", os.environ.get("PGPORT"))
+    config.set_option("alembic", "PGDATABASE", os.environ.get("PGDATABASE"))
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
