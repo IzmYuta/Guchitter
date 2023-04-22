@@ -2,7 +2,7 @@
 nixPkgs = ['python38','postgresql','gcc']
 
 [phases.build]
-cmds = ['cd ..',,'cd db','pwd','alembic upgrade head']
+cmds = ['cd ..','cd db','pwd','alembic upgrade head']
 
 [start]
 cmd = 'uvicorn main:app --reload'
