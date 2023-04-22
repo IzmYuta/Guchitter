@@ -32,7 +32,7 @@ def get_db():
 
 
 # 型定義は変数の後ろに：をつけ、定義する型をその後に書く
-@app.get("/api/get/", response_model=list[schemas.Guchi])
+@app.get("/api/home/", response_model=list[schemas.Guchi])
 def read_guchies(db: Session = Depends(get_db)):
     guchies = crud.get_guchies(db)
     return guchies
