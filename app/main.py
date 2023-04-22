@@ -12,6 +12,8 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://192.168.10.122:3000",
+    "https://guchitter-production.up.railway.app",
+    "https://ui-blush.vercel.app/"
 ]
 
 app.add_middleware(
