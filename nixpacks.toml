@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['python38', 'postgresql',gcc]
+nixPkgs = ['python38','postgresql','gcc']
 
 [phases.build]
 cmds = ['python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt','cd db','alembic upgrade head']
