@@ -5,4 +5,4 @@ nixPkgs = ['python38','postgresql','gcc']
 cmds = ['cd db && alembic upgrade head']
 
 [start]
-cmd = 'uvicorn app.main:app --host 0.0.0.0'
+cmd = 'uvicorn app.main:app --host 0.0.0.0 --port=${PORT:-5000}'
