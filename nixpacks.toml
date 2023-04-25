@@ -2,7 +2,7 @@
 nixPkgs = ['python38','postgresql','gcc']
 
 [phases.build]
-cmds = ['cd db && alembic upgrade head','apt -y install mkcert','mkcert localhost']
+cmds = ['cd db && alembic upgrade head','apt-get update -y','mkcert localhost']
 
 [start]
-cmd = 'uvicorn app.main:app --host 0.0.0.0 --port=${PORT:-5000} --ssl-keyfile localhost-key.pem --ssl-certfile localhost.pem'
+cmd = 'uvicorn app.main:app --host 0.0.0.0 --port=80 --ssl-keyfile localhost-key.pem --ssl-certfile localhost.pem'
