@@ -11,7 +11,7 @@ app = FastAPI()
 
 origins = [
     "https://guchitter-production.up.railway.app",
-    "https://ui-blush.vercel.app/"
+    "https://ui-blush.vercel.app"
 ]
 # origins = ["*"]
 
