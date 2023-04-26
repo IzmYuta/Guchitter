@@ -33,14 +33,16 @@ def get_db():
 
 
 # 型定義は変数の後ろに：をつけ、定義する型をその後に書く
-@app.get("/api/home/?")
+@app.get("/api/home")
+@app.get("/api/home/")
 def read_guchies(db: Session = Depends(get_db)):
     guchies = crud.get_guchies(db)
     return guchies
 
 
 # response_modelで返却する型を指定できる
-@app.post("/api/post/?", response_model=schemas.Guchi)
+@app.post("/api/post", response_model=schemas.Guchi)
+@app.post("/api/post/", response_model=schemas.Guchi)
 # スキーマを定義したものを引数に指定することで、リクエストボディのバリデーションを行う
 async def create_guchi(guchi: schemas.GuchiCreate, db: Session = Depends(get_db)):
     return crud.create_guchi(db, guchi=guchi)
