@@ -9,13 +9,11 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# origins = [
-#     "http://localhost:3000",
-#     "http://192.168.10.122:3000",
-#     "https://guchitter-production.up.railway.app",
-#     "https://ui-blush.vercel.app/"
-# ]
-origins = ["*"]
+origins = [
+    "https://guchitter-production.up.railway.app",
+    "https://ui-blush.vercel.app/"
+]
+# origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
