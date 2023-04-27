@@ -9,10 +9,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-origins = [
-    "https://guchitter-production.up.railway.app",
-    "https://ui-blush.vercel.app"
-]
+origins = ["https://guchitter-production.up.railway.app", "https://ui-blush.vercel.app"]
 # origins = ["*"]
 
 app.add_middleware(
@@ -37,6 +34,12 @@ def get_db():
 def read_guchies(db: Session = Depends(get_db)):
     guchies = crud.get_guchies(db)
     return guchies
+
+
+@app.get("/api/count")
+def read_count(db: Session = Depends(get_db)):
+    count = crud.get_count(db)
+    return {"count": count}
 
 
 # response_modelで返却する型を指定できる

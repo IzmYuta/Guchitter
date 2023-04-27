@@ -9,6 +9,10 @@ def get_guchies(db: Session, limit: int = 4):
     return db.query(models.Guchi).filter(models.Guchi.id.in_(num_list)).all()
 
 
+def get_count(db: Session):
+    return db.query(models.Guchi).count()
+
+
 def create_guchi(db: Session, guchi: schemas.GuchiCreate):
     db_guchi = models.Guchi(**guchi.dict())
     db.add(db_guchi)
